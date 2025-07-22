@@ -60,6 +60,16 @@ class DatabaseHelper {
     return await db.query('productos');
   }
 
+  Future<int> updateProduct(Map<String, dynamic> product) async {
+    Database db = await database;
+    return await db.update('productos', product, where: 'id = ?', whereArgs: [product['id']]);
+  }
+
+  Future<int> deleteProduct(int id) async {
+    Database db = await database;
+    return await db.delete('productos', where: 'id = ?', whereArgs: [id]);
+  }
+
   // Métodos para Ventas
   Future<int> insertSale(Map<String, dynamic> sale) async {
     Database db = await database;

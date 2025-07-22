@@ -1,35 +1,54 @@
 class Sale {
-  final int? id;
-  final int productId;
-  final int quantity;
-  final double totalPrice;
-  final DateTime date;
+  int? id;
+  String fechaHora;
+  String rutaVenta;
+  double totalVenta;
+  double denominacionPagoCliente;
+  double cambio;
+  int idProducto;
+  int cantidad;
+  String tipoUnidad;
+  String? nombreProducto; // Para mostrar en la lista de ventas
 
   Sale({
     this.id,
-    required this.productId,
-    required this.quantity,
-    required this.totalPrice,
-    required this.date,
+    required this.fechaHora,
+    required this.rutaVenta,
+    required this.totalVenta,
+    required this.denominacionPagoCliente,
+    required this.cambio,
+    required this.idProducto,
+    required this.cantidad,
+    required this.tipoUnidad,
+    this.nombreProducto,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'productId': productId,
-      'quantity': quantity,
-      'totalPrice': totalPrice,
-      'date': date.toIso8601String(),
+      'fecha_hora': fechaHora,
+      'ruta_venta': rutaVenta,
+      'total_venta': totalVenta,
+      'denominacion_pago_cliente': denominacionPagoCliente,
+      'cambio': cambio,
+      'id_producto': idProducto,
+      'cantidad': cantidad,
+      'tipo_unidad': tipoUnidad,
     };
   }
 
   factory Sale.fromMap(Map<String, dynamic> map) {
     return Sale(
       id: map['id'],
-      productId: map['productId'],
-      quantity: map['quantity'],
-      totalPrice: map['totalPrice'],
-      date: DateTime.parse(map['date']),
+      fechaHora: map['fecha_hora'],
+      rutaVenta: map['ruta_venta'],
+      totalVenta: map['total_venta'],
+      denominacionPagoCliente: map['denominacion_pago_cliente'],
+      cambio: map['cambio'],
+      idProducto: map['id_producto'],
+      cantidad: map['cantidad'],
+      tipoUnidad: map['tipo_unidad'],
+      nombreProducto: map['nombre_producto'],
     );
   }
 }
